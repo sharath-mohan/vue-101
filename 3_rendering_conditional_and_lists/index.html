@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ title }}</h1>
+      <div class="goals_container">
+        <h2>My goals</h2>
+        <div>
+          <input type="text" v-model="enteredValue" />
+          <button @click="addGoal">Add Goal</button>
+        </div>
+        <p v-if="goals.length === 0">No Goals have been added</p>
+        <ul v-else>
+          <li
+            v-for="(goal, index) in goals"
+            v-on:click="removeItem(index)"
+            :key="goal"
+          >
+            {{ index + 1}} {{ goal }}
+          </li>
+        </ul>
+        <button @click="toggleVisibility">visual togger</button>
+        <p v-show="visuallyShown">just visually hidden</p>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
